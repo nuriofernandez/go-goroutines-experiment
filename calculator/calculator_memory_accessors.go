@@ -1,7 +1,5 @@
 package calculator
 
-import "sync"
-
 func (m *Calculator) Contains(key int) bool {
 	m.lock.RLock()
 	_, exists := m.cache[key]
@@ -24,14 +22,8 @@ func (m *Calculator) Read(key int) int {
 
 func (m *Calculator) Get(key int) int {
 	if !m.Contains(key) {
-		var wg sync.WaitGroup
-		wg.Add(1)
-		go func() {
-			value := m.fibonacci(key)
-			m.Set(key, value)
-			wg.Done()
-		}()
-		wg.Wait()
+		value := m.fibonacci(key)
+		m.Set(key, value)
 	}
 	return m.Read(key)
 }
