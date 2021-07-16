@@ -25,8 +25,8 @@ func main() {
 
 			fmt.Printf("%d, %s, %d\n", index, time.Since(start), value)
 		}(n)
-
 	}
+
 	wg.Wait()
 	fmt.Printf("Everything has been done in %s\n", time.Since(appStart))
 }
