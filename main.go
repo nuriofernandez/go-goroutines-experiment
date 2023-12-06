@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"./calculator"
+	"github.com/xXNurioXx/go-goroutines-experiment/calculator"
 )
 
 func main() {
